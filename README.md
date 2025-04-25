@@ -1,53 +1,117 @@
-# Utiliverse
+# UTILIVERSE
 
-A collection of utility functions for strings, math, validation, colors, and dates.
+A comprehensive JavaScript utility library providing a collection of helper functions for string manipulation, math operations, validation, color handling, and date formatting.
 
 ## Installation
-bash
-npm install [package-name]
 
+```bash
+npm install js-utils-toolkit
+```
 
-*Usage*
+## Usage
 
-const utils = require('utiliverse');
+```javascript
+// Import the entire library
+import jsUtils from 'js-utils-toolkit';
 
-// String utilities
-console.log(utils.capitalize('hello world')); // Hello world
+// Use string utilities
+jsUtils.string.capitalize('hello'); // 'Hello'
 
-// Math utilities
-console.log(utils.gcd(12, 15)); // 3
+// Or import specific modules
+import { string, math } from 'js-utils-toolkit';
 
-// Validation
-console.log(utils.isValidEmail('example@example.com')); // true
+string.toCamelCase('hello-world'); // 'helloWorld'
+math.factorial(5); // 120
+```
 
-// Color utilities
-console.log(utils.hexToRgb('#ffffff')); // { r: 255, g: 255, b: 255 }
+## Features
 
-// Date utilities
-console.log(utils.formatDate(new Date())); // YYYY-MM-DD
+### String Utilities
 
+```javascript
+import { string } from 'js-utils-toolkit';
 
-*API*
-*String Utilities*
-- `capitalize(str)`: Capitalizes the first letter of a string.
-- `trim(str)`: Trims whitespace from a string.
+// Capitalize the first letter
+string.capitalize('hello'); // 'Hello'
 
-*Math Utilities*
-- `gcd(a, b)`: Calculates the greatest common divisor of two numbers.
-- `random(min, max)`: Generates a random number between min and max.
+// Convert to camelCase
+string.toCamelCase('hello-world'); // 'helloWorld'
 
-*Validation*
-- `isValidEmail(email)`: Validates an email address.
-- `isValidPhoneNumber(phoneNumber)`: Validates a phone number.
+// Convert to snake_case
+string.toSnakeCase('helloWorld'); // 'hello_world'
 
-*Color Utilities*
-- `hexToRgb(hex)`: Converts a hex color to RGB.
-- `rgbToHex(rgb)`: Converts an RGB color to hex.
+// Trim whitespace
+string.trim('  hello  '); // 'hello'
+string.trim('hello world', true); // 'helloworld' (removes all whitespace)
+```
 
-*Date Utilities*
-- `formatDate(date)`: Formats a date in YYYY-MM-DD format.
-- `getDateDifference(date1, date2)`: Calculates the difference between two dates.
+### Math Utilities
 
+```javascript
+import { math } from 'js-utils-toolkit';
 
-*License*
-Licensed under the MIT License.
+// Calculate GCD
+math.gcd(12, 8); // 4
+
+// Generate random number
+math.random(1, 10); // Random integer between 1 and 10
+math.random(1, 10, false); // Random floating-point number between 1 and 10
+
+// Calculate factorial
+math.factorial(5); // 120
+```
+
+### Validation Utilities
+
+```javascript
+import { validation } from 'js-utils-toolkit';
+
+// Validate email
+validation.isValidEmail('user@example.com'); // true
+
+// Validate phone number
+validation.isValidPhone('123-456-7890'); // true
+validation.isValidPhone('07911 123456', 'UK'); // true
+
+// Validate credit card
+validation.isValidCreditCard('4111111111111111'); // true
+```
+
+### Color Utilities
+
+```javascript
+import { color } from 'js-utils-toolkit';
+
+// Convert hex to RGB
+color.hexToRgb('#ff0000'); // { r: 255, g: 0, b: 0 }
+
+// Convert RGB to hex
+color.rgbToHex(255, 0, 0); // '#ff0000'
+
+// Generate a color palette
+color.generatePalette('#3498db', 5); // Array of 5 color variations
+
+// Calculate contrast ratio
+color.calculateContrast('#ffffff', '#000000'); // 21 (maximum contrast)
+```
+
+### Date Utilities
+
+```javascript
+import { date } from 'js-utils-toolkit';
+
+// Format date
+date.formatDate(new Date(2023, 0, 1), 'YYYY-MM-DD'); // '2023-01-01'
+
+// Calculate date difference
+const date1 = new Date(2023, 0, 1);
+const date2 = new Date(2023, 0, 10);
+date.dateDiff(date1, date2, 'days'); // 9
+
+// Generate calendar
+date.generateCalendar(2023, 0); // Calendar for January 2023
+```
+
+## License
+
+MIT
